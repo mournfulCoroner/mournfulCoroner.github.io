@@ -28,15 +28,17 @@ for(var i = 0; i < gallery.length; i++) {
 
 $(function(){
     $('.fclick').on('click', darkness);
-    $('body').mousemove(function(e){
-        if($('.fclick').text() == "Включить свет"){
-            obj = document.getElementById("overlay");
-            obj.style.top = e.clientY   / document.documentElement.clientHeight * 100 - 150 + "vh";
-            obj.style.left = 1 * e.clientX / document.documentElement.clientWidth * 100 - 150 + "vw";
-        }
-    })
+    $('body').mousemove(light_move);
+    document.querySelector("body").addEventListener("touchmove", light_move);
 })
 
+function light_move(e){
+    if($('.fclick').text() == "Включить свет"){
+        obj = document.getElementById("overlay");
+        obj.style.top = e.clientY   / document.documentElement.clientHeight * 100 - 150 + "vh";
+        obj.style.left = 1 * e.clientX / document.documentElement.clientWidth * 100 - 150 + "vw";
+    }
+}
 function darkness(){
     if($('.fclick').text() == "Выключить свет"){
         $('body').append("<div id='overlay' class='overlay'></div>");
