@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.querySelector('header h1').innerHTML = randomize;
 });
 
-document.querySelector(".button_icon").addEventListener("click", function(){
-    document.querySelector("header").classList.toggle("open_icon_menu");
+document.querySelector('.button_icon').addEventListener('click', function(){
+    document.querySelector('header').classList.toggle('open_icon_menu');
 })
 
-var gallery = document.querySelectorAll(".photo");
+var gallery = document.querySelectorAll('.photo');
 
 for(var i = 0; i < gallery.length; i++) {
     (function loop(index) {
@@ -28,15 +28,22 @@ for(var i = 0; i < gallery.length; i++) {
 
 $(function(){
     $('.fclick').on('click', darkness);
-    $('body').mousemove(light_move);
-    document.querySelector("body").addEventListener("touchmove", light_move);
+    $('body').on('mousemove', light_move);
+    $('body').on('touchmove', light_move_mobile);
 })
 
 function light_move(e){
     if($('.fclick').text() == "Включить свет"){
-        obj = document.getElementById("overlay");
+        obj = document.getElementById('overlay');
         obj.style.top = e.clientY   / document.documentElement.clientHeight * 100 - 150 + "vh";
         obj.style.left = 1 * e.clientX / document.documentElement.clientWidth * 100 - 150 + "vw";
+    }
+}
+function light_move_mobile(e){
+    if($('.fclick').text() == "Включить свет"){
+        obj = document.getElementById('overlay');
+        obj.style.top = e.targetTouches[0].clientY   / document.documentElement.clientHeight * 100 - 150 + "vh";
+        obj.style.left = 1 * e.targetTouches[0].clientX / document.documentElement.clientWidth * 100 - 150 + "vw";
     }
 }
 function darkness(){
@@ -48,7 +55,7 @@ function darkness(){
               'top': '-100vh',
               'left': '-100vw',
               'background-color': 'black',
-              'background': 'radial-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6))',
+              'background': 'radial-gradient(circle, transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0,0.6))',
               'width': '300vw',
               'height': '300vh',
               'z-index': 5000,
