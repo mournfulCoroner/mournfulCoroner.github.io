@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function() { 
     var quotes = new Array(
         "„Чем страсть сильнее, тем печальнее бывает у неё конец.“", 
         "„Балет – это искусство превращать движение в искусство.“", 
@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     document.querySelector('header h1').innerHTML = randomize;
 });
 
-document.querySelector('.button_icon').addEventListener('click', function(){
-    document.querySelector('header').classList.toggle('open_icon_menu');
+$('.button_icon').on('click', function(){
+   $('header').toggleClass('open_icon_menu');
 })
 
 var gallery = document.querySelectorAll('.photo');
